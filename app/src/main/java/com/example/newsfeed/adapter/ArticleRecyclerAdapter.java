@@ -1,4 +1,4 @@
-package com.example.newsfeed;
+package com.example.newsfeed.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.newsfeed.R;
 
 import java.util.ArrayList;
 
