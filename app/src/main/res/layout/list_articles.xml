@@ -16,12 +16,22 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="71dp">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/txtHeadlines"
+                app:layout_constraintHorizontal_bias="0.24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_round" />
 
             <TextView
                 android:id="@+id/txtHeadlines"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="256dp"
+                android:layout_height="21dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -29,11 +39,12 @@
                 android:layout_marginRight="8dp"
                 android:text="@string/tvHeadlines"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.917"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtContent"
+                android:id="@+id/txtDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -41,6 +52,24 @@
                 app:layout_constraintEnd_toEndOf="@+id/txtHeadlines"
                 app:layout_constraintStart_toStartOf="@+id/txtHeadlines"
                 app:layout_constraintTop_toBottomOf="@+id/txtHeadlines" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/txtDescription"
+                app:layout_constraintStart_toStartOf="@+id/txtDescription"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescription">
+
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tvDate" />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

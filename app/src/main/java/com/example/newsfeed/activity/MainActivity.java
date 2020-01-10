@@ -1,7 +1,8 @@
-package com.example.newsfeed;
+package com.example.newsfeed.activity;
 
 import android.os.Bundle;
 
+import com.example.newsfeed.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
