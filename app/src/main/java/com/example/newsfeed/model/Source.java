@@ -1,18 +1,21 @@
 package com.example.newsfeed.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Source {
     @SerializedName("id")
-    private String id;
+    @Expose
+    private Object id;
     @SerializedName("name")
+    @Expose
     private String name;
 
-    public String getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Object id) {
         this.id = id;
     }
 

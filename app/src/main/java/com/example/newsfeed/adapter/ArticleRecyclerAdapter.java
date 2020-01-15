@@ -10,26 +10,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.newsfeed.R;
+import com.example.newsfeed.model.Articles;
 
-import java.util.ArrayList;
+
+import java.util.List;
+
 
 public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecyclerAdapter.ArticleViewHolder> {
     private Context mContext;
-    private ArrayList<String> mArticles;
+    private List<Articles> mArticles;
     private LayoutInflater mLayoutInflater;
 
     //class constructor
-    public ArticleRecyclerAdapter(){}
 
-
-    public ArticleRecyclerAdapter(Context context, ArrayList<String> articles){
+    public ArticleRecyclerAdapter(Context context, List<Articles> articles){
         this.mContext = context;
-        mLayoutInflater = LayoutInflater.from(mContext);
         this.mArticles = articles;
+        mLayoutInflater = LayoutInflater.from(mContext);
     }
-
-
 
     @Override
     public ArticleRecyclerAdapter.ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,9 +39,14 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ArticleRecyclerAdapter.ArticleViewHolder holder, int position) {
-        holder.headlines.setText(mArticles.get(position));
-        holder.description.setText(mArticles.get(position));
-        holder.date.setText(mArticles.get(position));
+        Articles articles = mArticles.get(position);
+
+        Glide.with(mContext).load(mArticles.get(position).getUrlToImage()).into(holder.image);
+        holder.title.setText(articles.getTitle());
+        holder.description.setText(articles.getDescription());
+        holder.author.setText(articles.getAuthor());
+        holder.date.setText(articles.getPublishedAt());
+
     }
 
     @Override
@@ -52,16 +57,19 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
     public class ArticleViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView image;
-        public TextView headlines;
+        public TextView title;
         public TextView description;
+        public TextView author;
         public TextView date;
 
         public ArticleViewHolder(@NonNull View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.imageView);
-            headlines = (TextView) itemView.findViewById(R.id.txtHeadlines);
-            description = (TextView) itemView.findViewById(R.id.txtDescription);
-            date = (TextView) itemView.findViewById(R.id.txtDate);
+            title = (TextView) itemView.findViewById(R.id.headline_text);
+            description = (TextView) itemView.findViewById(R.id.description_text);
+            author = (TextView) itemView.findViewById(R.id.author_text);
+            date = (TextView) itemView.findViewById(R.id.date_text);
         }
     }
+
 }

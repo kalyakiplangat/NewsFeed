@@ -4,4 +4,7 @@
     <string name="tvHeadlines">Headlines title</string>
     <string name="tvContent">Content description</string>
     <string name="tvDate">Date published</string>
+    <string name="author">author</string>
+    <string name="headline">Headline Ttile</string>
+    <string name="description">headline description</string>
 </resources>
