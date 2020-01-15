@@ -3,17 +3,39 @@ package com.example.newsfeed.activity;
 import android.os.Bundle;
 
 import com.example.newsfeed.R;
+import com.example.newsfeed.adapter.ArticleRecyclerAdapter;
+import com.example.newsfeed.model.Articles;
+import com.example.newsfeed.model.ResponseModel;
+import com.example.newsfeed.rest.ArticleInterface;
+import com.example.newsfeed.rest.RestApiClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String API_KEY = "ac6f8702d7ca442b99ae381ded10be6a";
+    private RecyclerView mRecyclerView;
+    private List<Articles> mArticles = new ArrayList<>();
+    private ArticleRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +52,45 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.list_articles);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new ArticleRecyclerAdapter(this, mArticles);
+
+        loadData();
+    }
+
+    private void loadData() {
+        ArticleInterface mInterface = RestApiClient.getClient().create(ArticleInterface.class);
+        String country = "techcrunch";
+        Call<ResponseModel> call;
+        call = mInterface.getLatestNews(country);
+        call.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+
+                if (response.isSuccessful() && response.body().getArticles() != null){
+
+                    mArticles = response.body().getArticles();
+                    mAdapter = new ArticleRecyclerAdapter(MainActivity.this, mArticles);
+                    mRecyclerView.setAdapter(mAdapter);
+
+                    Log.d("data onResponse","s"+response.body().getArticles());
+
+                }else {
+                    Log.d("Error onResponse","could not load the data");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Log.d("MainActivity", "error loading from API");
+            }
+        });
+
     }
 
     @Override
@@ -53,4 +114,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
