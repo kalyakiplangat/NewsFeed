@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">NewsFeed</string>
     <string name="action_settings">Settings</string>
-    <string name="tvHeadlines">Headlines title</string>
-    <string name="tvContent">Content description</string>
     <string name="tvDate">Date published</string>
     <string name="author">author</string>
-    <string name="headline">Headline Ttile</string>
+    <string name="headline">Headline Title</string>
     <string name="description">headline description</string>
 </resources>

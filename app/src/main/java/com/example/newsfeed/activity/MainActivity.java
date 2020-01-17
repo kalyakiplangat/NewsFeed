@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
+
+
                 Log.d("MainActivity", "error loading from API");
             }
         });
