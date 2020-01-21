@@ -1,22 +1,19 @@
 package com.example.newsfeed.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.example.newsfeed.R;
-import com.example.newsfeed.model.Articles;
+import com.example.newsfeed.databinding.ActivityDetailBinding;
 
 public class DetailActivity extends AppCompatActivity {
-
+    private ActivityDetailBinding binding;
     private WebView webView;
 
     private String mWebView;
@@ -24,9 +21,9 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
-        webView = (WebView)findViewById(R.id.webview);
+        webView = binding.webview;
 
         Intent intent = getIntent();
 

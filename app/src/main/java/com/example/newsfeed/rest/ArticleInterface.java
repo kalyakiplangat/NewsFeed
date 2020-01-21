@@ -1,6 +1,5 @@
 package com.example.newsfeed.rest;
 
-import com.example.newsfeed.model.Articles;
 import com.example.newsfeed.model.ResponseModel;
 
 import retrofit2.Call;
