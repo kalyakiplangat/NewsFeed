@@ -5,7 +5,6 @@ It interface with the newsapi.
 ## Requirements
 * Android Studio 3.5
 ## Install
-'''
-[Download](https://github.com/kalyakiplangat/NewsFeed.git) GitHub repository
-'''
+*[Download](https://github.com/kalyakiplangat/NewsFeed.git) GitHub repository
+
 
