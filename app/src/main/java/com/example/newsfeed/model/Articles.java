@@ -1,7 +1,15 @@
 package com.example.newsfeed.model;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import kotlin.jvm.JvmStatic;
 
 public class Articles {
     @SerializedName("source")
@@ -91,6 +99,18 @@ public class Articles {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @BindingAdapter("app:imageUrl")
+    @JvmStatic
+    public static void loadImage(ImageView view, String imageUrl){
+
+        RequestOptions options = new RequestOptions();
+
+        Glide.with(view.getContext())
+                .applyDefaultRequestOptions(options)
+                .load(imageUrl)
+                .into(view);
     }
 }
 
