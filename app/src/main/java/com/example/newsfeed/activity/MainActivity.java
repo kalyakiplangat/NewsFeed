@@ -7,11 +7,13 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newsfeed.R;
 import com.example.newsfeed.adapter.ArticleRecyclerAdapter;
+import com.example.newsfeed.databinding.ContentMainBinding;
 import com.example.newsfeed.model.Articles;
 import com.example.newsfeed.model.ResponseModel;
 import com.example.newsfeed.rest.ArticleInterface;
@@ -31,16 +33,20 @@ public class MainActivity extends AppCompatActivity {
     private List<Articles> mArticles = new ArrayList<>();
     private ArticleRecyclerAdapter mAdapter;
 
+    private ContentMainBinding mainBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.content_main);
+//        setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.list_articles);
+//        mRecyclerView = (RecyclerView) findViewById(R.id.list_articles);
+
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
+        mainBinding.listArticles.setLayoutManager(layoutManager);
 
         mAdapter = new ArticleRecyclerAdapter(this, mArticles);
 
@@ -60,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                     mArticles = response.body().getArticles();
                     mAdapter = new ArticleRecyclerAdapter(MainActivity.this, mArticles);
-                    mRecyclerView.setAdapter(mAdapter);
+                    mainBinding.listArticles.setAdapter(mAdapter);
 
                     Log.d("data onResponse","s"+response.body().getArticles());
 

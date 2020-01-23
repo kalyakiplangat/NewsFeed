@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="ListArtclesBinding">
+        <variable
+            name="articlesModel"
+            type="com.example.newsfeed.model.Articles" />
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
+
+    <FrameLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,17 +38,17 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
+                    app:imageUrl="@{imageUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@mipmap/ic_launcher_round" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/headline_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{headline}"
+                    android:text="@{articlesModel.title}"
                     android:fontFamily="sans-serif-light"
                     android:textColor="@color/colorTextTitle"
                     android:textStyle="bold"
@@ -50,7 +61,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextSubtitle"
-                    android:text="@{description}"
+                    android:text="@{articlesModel.description}"
                     app:layout_constraintEnd_toEndOf="@+id/headline_text"
                     app:layout_constraintStart_toStartOf="@+id/headline_text"
                     app:layout_constraintTop_toBottomOf="@+id/headline_text" />
@@ -70,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_weight="1"
-                        android:text="@{author}"
+                        android:text="@{articlesModel.author}"
                         android:textStyle="bold" />
 
                     <TextView
@@ -79,10 +90,11 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_weight="1"
-                        android:text="@{date}"
+                        android:text="@{articlesModel.publishedAt}"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </FrameLayout>
+</layout>
