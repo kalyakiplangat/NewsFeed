@@ -1,10 +1,13 @@
 package com.example.newsfeed.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private ActivityDetailBinding binding;
     private WebView webView;
+    private ProgressBar progressBar;
+
     private String mWebView;
 
     @Override
@@ -26,10 +31,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
-        int duration = LENGTH_LONG;
-
         webView = binding.webview;
-
+        progressBar = findViewById(R.id.progressBar);
         Intent intent = getIntent();
         mWebView = intent.getStringExtra("webview");
 
@@ -38,6 +41,22 @@ public class DetailActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(mWebView);
 
+    }
+    public class WebViewClient extends android.webkit.WebViewClient {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            progressBar.setVisibility(View.GONE);
+        }
     }
 }
 
