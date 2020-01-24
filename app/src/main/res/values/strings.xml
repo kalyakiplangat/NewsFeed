@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewsFeed</string>
+    <string name="top_news">Top News</string>
+    <string name="deatils">Articles details</string>
     <string name="action_settings">Settings</string>
     <string name="tvDate">Date published</string>
     <string name="author">author</string>

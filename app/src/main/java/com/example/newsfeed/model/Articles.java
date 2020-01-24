@@ -1,5 +1,7 @@
 package com.example.newsfeed.model;
 
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -112,5 +114,34 @@ public class Articles {
                 .load(imageUrl)
                 .into(view);
     }
+    @BindingAdapter("app:webViewUrl")
+    @JvmStatic
+    public static void loadWebUrl(WebView webView, String webUrl){
+        webView.loadUrl(webUrl);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
