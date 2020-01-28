@@ -9,6 +9,9 @@
     <variable
         name="webViewUrl"
         type="String" />
+    <variable
+        name="progressBar"
+        type="String" />
 </data>
     <RelativeLayout
         android:layout_width="match_parent"
