@@ -8,10 +8,13 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newsfeed.R;
+import com.example.newsfeed.ViewModel.ArticlesViewModel;
 import com.example.newsfeed.adapter.ArticleRecyclerAdapter;
 import com.example.newsfeed.databinding.ContentMainBinding;
 import com.example.newsfeed.model.Articles;
@@ -27,59 +30,34 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String API_KEY = "ac6f8702d7ca442b99ae381ded10be6a";
-    private RecyclerView mRecyclerView;
-    private List<Articles> mArticles = new ArrayList<>();
+    private RecyclerView recyclerView;
     private ArticleRecyclerAdapter mAdapter;
-
-    private ContentMainBinding mainBinding;
+    private List<Articles> articlesList = new ArrayList<>();
+    private ArticlesViewModel articlesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainBinding = DataBindingUtil.setContentView(this, R.layout.content_main);
+
+        setContentView(R.layout.content_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        mRecyclerView = (RecyclerView) findViewById(R.id.list_articles);
-
+        recyclerView = findViewById(R.id.list_articles);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mainBinding.listArticles.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ArticleRecyclerAdapter(this, mArticles);
+        mAdapter = new ArticleRecyclerAdapter(MainActivity.this, articlesList);
+        recyclerView.setAdapter(mAdapter);
 
-        loadData();
-    }
-
-    private void loadData() {
-        ArticleInterface mInterface = RestApiClient.getClient().create(ArticleInterface.class);
-        String country = "techcrunch";
-        Call<ResponseModel> call;
-        call = mInterface.getLatestNews(country);
-        call.enqueue(new Callback<ResponseModel>() {
+        articlesViewModel = ViewModelProviders.of(this).get(ArticlesViewModel.class);
+        articlesViewModel.getArticles().observe(this, new Observer<List<Articles>>() {
             @Override
-            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
-
-                if (response.isSuccessful() && response.body().getArticles() != null){
-
-                    mArticles = response.body().getArticles();
-                    mAdapter = new ArticleRecyclerAdapter(MainActivity.this, mArticles);
-                    mainBinding.listArticles.setAdapter(mAdapter);
-
-                    Log.d("data onResponse","s"+response.body().getArticles());
-
-                }else {
-                    Log.d("Error onResponse","could not load the data");
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseModel> call, Throwable t) {
-                Log.d("MainActivity", "error loading from API");
+            public void onChanged(List<Articles> articles) {
+                mAdapter.setArticles(articles);
             }
         });
+
 
     }
 

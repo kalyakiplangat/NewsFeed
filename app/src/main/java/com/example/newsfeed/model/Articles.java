@@ -103,17 +103,17 @@ public class Articles {
         this.content = content;
     }
 
-    @BindingAdapter("app:imageUrl")
-    @JvmStatic
-    public static void loadImage(ImageView view, String imageUrl){
-
-        RequestOptions options = new RequestOptions();
-
-        Glide.with(view.getContext())
-                .applyDefaultRequestOptions(options)
-                .load(imageUrl)
-                .into(view);
-    }
+//    @BindingAdapter("app:imageUrl")
+//    @JvmStatic
+//    public static void loadImage(ImageView view, String imageUrl){
+//
+//        RequestOptions options = new RequestOptions();
+//
+//        Glide.with(view.getContext())
+//                .applyDefaultRequestOptions(options)
+//                .load(imageUrl)
+//                .into(view);
+//    }
     @BindingAdapter("app:webViewUrl")
     @JvmStatic
     public static void loadWebUrl(WebView webView, String webUrl){
