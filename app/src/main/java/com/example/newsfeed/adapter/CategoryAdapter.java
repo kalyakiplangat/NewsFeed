@@ -35,9 +35,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Source category = mCategories.get(position);
 
-        holder.sourceName.setText(category.getName());
+        holder.sourceName.setText("Source : " + category.getName().substring(0, 1).toUpperCase() + category.getName().substring(1).toLowerCase());
         holder.description.setText(category.getDescription());
-        holder.category.setText(category.getCategory());
+        holder.category.setText("Category : " + category.getCategory().substring(0, 1).toUpperCase() + category.getCategory().substring(1).toLowerCase());
 
     }
 

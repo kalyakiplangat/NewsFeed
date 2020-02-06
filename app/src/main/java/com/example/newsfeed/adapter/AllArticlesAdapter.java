@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.newsfeed.R;
 import com.example.newsfeed.model.basemodel.AllArticles;
+import com.example.newsfeed.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class AllArticlesAdapter extends RecyclerView.Adapter<AllArticlesAdapter.
         holder.description.setText(articles.getDescription());
         holder.author.setText(articles.getAuthor());
         holder.source.setText(articles.getSource().getName());
-        holder.date.setText(articles.getPublishedAt());
+        holder.date.setText(Utils.DateFormat(articles.getPublishedAt()));
         holder.mCurrentPosition = position;
     }
 
