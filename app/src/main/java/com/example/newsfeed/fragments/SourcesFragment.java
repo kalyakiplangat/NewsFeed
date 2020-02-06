@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.newsfeed.R;
 import com.example.newsfeed.adapter.CategoryAdapter;
@@ -68,6 +69,7 @@ public class SourcesFragment extends Fragment {
 
             @Override
             public void onFailure(Call<BaseSource> call, Throwable t) {
+                Toast.makeText(getActivity(), "Faill to load sources", Toast.LENGTH_SHORT).show();
 
             }
         });

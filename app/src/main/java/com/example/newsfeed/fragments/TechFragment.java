@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.newsfeed.R;
 import com.example.newsfeed.adapter.ArticleRecyclerAdapter;
@@ -77,6 +78,7 @@ public class TechFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Toast.makeText(getActivity(), "Fail to load tech related articles", Toast.LENGTH_SHORT).show();
                 Log.d("MainActivity", "error loading from API");
             }
         });

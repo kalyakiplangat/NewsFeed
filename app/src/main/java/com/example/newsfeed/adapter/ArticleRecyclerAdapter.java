@@ -20,6 +20,7 @@ import com.example.newsfeed.R;
 import com.example.newsfeed.activity.DetailActivity;
 import com.example.newsfeed.databinding.ListArtclesBinding;
 import com.example.newsfeed.model.Articles;
+import com.example.newsfeed.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
         holder.description.setText(articles.getDescription());
         holder.author.setText(articles.getAuthor());
         holder.source.setText(articles.getSource().getName());
-        holder.date.setText(articles.getPublishedAt());
+        holder.date.setText(Utils.DateFormat(articles.getPublishedAt()));
         holder.mCurrentPosition = position;
 
     }
