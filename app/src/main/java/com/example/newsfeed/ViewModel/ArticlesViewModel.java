@@ -33,9 +33,9 @@ public class ArticlesViewModel extends ViewModel {
 
     private void loadData() {
         ArticleInterface mInterface = RestApiClient.getClient().create(ArticleInterface.class);
-        String country = "techcrunch";
+        String source = "techcrunch";
         Call<ResponseModel> call;
-        call = mInterface.getLatestNews(country);
+        call = mInterface.getLatestNews(source);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {

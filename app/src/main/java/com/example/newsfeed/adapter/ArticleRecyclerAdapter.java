@@ -14,6 +14,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.newsfeed.R;
 import com.example.newsfeed.activity.DetailActivity;
 import com.example.newsfeed.databinding.ListArtclesBinding;
@@ -46,11 +48,13 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
 
         Glide.with(mContext)
                 .load(articles.getUrlToImage())
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
 
         holder.title.setText(articles.getTitle());
         holder.description.setText(articles.getDescription());
         holder.author.setText(articles.getAuthor());
+        holder.source.setText(articles.getSource().getName());
         holder.date.setText(articles.getPublishedAt());
         holder.mCurrentPosition = position;
 
@@ -71,6 +75,7 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
         public ImageView imageView;
         public TextView title;
         public TextView description;
+        public TextView source;
         public TextView author;
         public TextView date;
         public int mCurrentPosition;
@@ -82,6 +87,7 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
             title = itemView.findViewById(R.id.headline_text);
             description = itemView.findViewById(R.id.description_text);
             author = itemView.findViewById(R.id.author_text);
+            source = itemView.findViewById(R.id.source_text);
             date = itemView.findViewById(R.id.date_text);
 
 
