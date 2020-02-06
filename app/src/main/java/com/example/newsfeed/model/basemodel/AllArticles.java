@@ -1,25 +1,9 @@
-package com.example.newsfeed.model;
+package com.example.newsfeed.model.basemodel;
 
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
-
-import androidx.databinding.BindingAdapter;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import kotlin.jvm.JvmStatic;
-@Entity(tableName = "articles_table")
-public class Articles {
-    @SerializedName("id")
-    @Expose
-    @PrimaryKey
-    private int id;
+public class AllArticles {
     @SerializedName("source")
     @Expose
     private Source source;
@@ -44,14 +28,6 @@ public class Articles {
     @SerializedName("content")
     @Expose
     private String content;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Source getSource() {
         return source;
@@ -116,46 +92,4 @@ public class Articles {
     public void setContent(String content) {
         this.content = content;
     }
-
-//    @BindingAdapter("app:imageUrl")
-//    @JvmStatic
-//    public static void loadImage(ImageView view, String imageUrl){
-//
-//        RequestOptions options = new RequestOptions();
-//
-//        Glide.with(view.getContext())
-//                .applyDefaultRequestOptions(options)
-//                .load(imageUrl)
-//                .into(view);
-//    }
-    @BindingAdapter("app:webViewUrl")
-    @JvmStatic
-    public static void loadWebUrl(WebView webView, String webUrl){
-        webView.loadUrl(webUrl);
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
