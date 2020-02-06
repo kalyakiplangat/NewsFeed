@@ -17,6 +17,7 @@ public class SourceActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabItem tabArticles;
     private TabItem tabSources;
+    private TabItem tabTechnology;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class SourceActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         tabArticles = findViewById(R.id.item_articles);
         tabSources = findViewById(R.id.item_source);
+        tabTechnology = findViewById(R.id.item_technology);
 
         viewPager = findViewById(R.id.viewpager);
         final PagerAdapter pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
@@ -35,9 +37,7 @@ public class SourceActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-//                if (tab.getPosition() == 1){
-//
-//                }
+
             }
 
             @Override

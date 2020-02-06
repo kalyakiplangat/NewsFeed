@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.newsfeed.fragments.AllArticlesFragment;
 import com.example.newsfeed.fragments.SourcesFragment;
+import com.example.newsfeed.fragments.TechFragment;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
     private int mNumberOfTabs;
@@ -24,6 +25,8 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 return new AllArticlesFragment();
             case 1:
                 return new SourcesFragment();
+            case 2:
+                return new TechFragment();
             default:
                 return null;
 
