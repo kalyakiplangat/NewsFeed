@@ -24,10 +24,6 @@
         <activity
             android:name=".activity.DetailActivity"
             android:label="@string/deatils" />
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
