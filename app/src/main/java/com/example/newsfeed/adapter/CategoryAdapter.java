@@ -57,6 +57,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             sourceName = itemView.findViewById(R.id.source_text);
             description = itemView.findViewById(R.id.description_text);
             category = itemView.findViewById(R.id.category_text);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 }
