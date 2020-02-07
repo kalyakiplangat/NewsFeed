@@ -6,8 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.newsfeed.activity.MainActivity;
-import com.example.newsfeed.adapter.ArticleRecyclerAdapter;
 import com.example.newsfeed.model.Articles;
 import com.example.newsfeed.model.ResponseModel;
 import com.example.newsfeed.rest.ArticleInterface;
