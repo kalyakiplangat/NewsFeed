@@ -1,6 +1,7 @@
 package com.example.newsfeed.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.newsfeed.R;
+import com.example.newsfeed.activity.ArticlesActivity;
 import com.example.newsfeed.model.basemodel.AllArticles;
 import com.example.newsfeed.utils.Utils;
 
@@ -74,6 +76,16 @@ public class AllArticlesAdapter extends RecyclerView.Adapter<AllArticlesAdapter.
             author = itemView.findViewById(R.id.author_text);
             date = itemView.findViewById(R.id.date_text);
             source = itemView.findViewById(R.id.source_text);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AllArticles allArticles = mAllArticles.get(mCurrentPosition);
+                    Intent intent = new Intent(mContext, ArticlesActivity.class);
+                    intent.putExtra("webView", allArticles.getUrl());
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }
