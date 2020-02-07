@@ -6,9 +6,8 @@ This app displays news articles from News.org API.
 Pre-requisites
 --------------
 
-- Android SDK v23
-- Android Build Tools v23.0.2
-- Android Support Repository v23.3.0
+- Android SDK v29
+- Android Build Tools v29.0.2
 
 Getting Started
 ---------------
