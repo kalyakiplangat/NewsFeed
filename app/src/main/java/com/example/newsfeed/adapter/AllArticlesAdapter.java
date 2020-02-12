@@ -19,6 +19,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.newsfeed.R;
+import com.example.newsfeed.activity.ArticlesActivity;
 import com.example.newsfeed.model.basemodel.AllArticles;
 import com.example.newsfeed.utils.Utils;
 
