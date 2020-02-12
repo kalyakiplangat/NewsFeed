@@ -4,14 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 <data class="ActivityDetailBinding">
     <variable
-        name="webview"
+        name="articles"
         type="com.example.newsfeed.model.Articles" />
-    <variable
-        name="webViewUrl"
-        type="String" />
-    <variable
-        name="progressBar"
-        type="String" />
 </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +24,7 @@
             android:layout_height="wrap_content" />
         <WebView
                 android:id="@+id/webview"
-                app:webViewUrl="@{webViewUrl}"
+                app:webViewUrl="@{articles.url}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/progressBar"
