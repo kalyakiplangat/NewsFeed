@@ -6,17 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.newsfeed.R;
 import com.example.newsfeed.databinding.ActivityDetailBinding;
-
-import static android.widget.Toast.LENGTH_LONG;
 
 public class DetailActivity extends AppCompatActivity {
 

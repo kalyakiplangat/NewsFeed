@@ -1,13 +1,12 @@
 package com.example.newsfeed.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-
 import com.example.newsfeed.R;
 import com.example.newsfeed.adapter.ViewPagerAdapter;
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class SourceActivity extends AppCompatActivity {

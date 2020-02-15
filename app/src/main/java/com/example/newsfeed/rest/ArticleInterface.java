@@ -1,7 +1,7 @@
 package com.example.newsfeed.rest;
 
-import com.example.newsfeed.sourcemodel.BaseSource;
 import com.example.newsfeed.model.ResponseModel;
+import com.example.newsfeed.sourcemodel.BaseSource;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
