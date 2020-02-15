@@ -9,10 +9,10 @@ import com.example.newsfeed.fragments.AllArticlesFragment;
 import com.example.newsfeed.fragments.SourcesFragment;
 import com.example.newsfeed.fragments.TechFragment;
 
-public class PageAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private int mNumberOfTabs;
 
-    public PageAdapter(@NonNull FragmentManager fm, int numberOfTabs) {
+    public ViewPagerAdapter(@NonNull FragmentManager fm, int numberOfTabs) {
         super(fm);
         this.mNumberOfTabs = numberOfTabs;
     }

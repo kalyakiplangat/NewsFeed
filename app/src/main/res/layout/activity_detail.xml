@@ -2,42 +2,59 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<data class="ActivityDetailBinding">
-    <variable
-        name="webview"
-        type="com.example.newsfeed.model.Articles" />
-    <variable
-        name="webViewUrl"
-        type="String" />
-    <variable
-        name="progressBar"
-        type="String" />
-</data>
-    <RelativeLayout
+
+    <data class="ActivityDetailBinding">
+
+        <variable
+            name="webview"
+            type="com.example.newsfeed.model.Articles" />
+
+        <variable
+            name="webViewUrl"
+            type="String" />
+
+        <variable
+            name="progressBar"
+            type="String" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:background="@android:color/white"
         android:fitsSystemWindows="true"
         tools:context=".activity.DetailActivity">
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:max="3"
-            android:progress="100"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <WebView
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbarFadeDuration="0"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <WebView
                 android:id="@+id/webview"
-                app:webViewUrl="@{webViewUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/progressBar"
-                android:layout_centerHorizontal="true">
-            </WebView>
+                android:layout_centerHorizontal="true"
+                app:webViewUrl="@{webViewUrl}"></WebView>
 
-    </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-7dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
 
 

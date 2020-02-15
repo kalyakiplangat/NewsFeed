@@ -1,13 +1,12 @@
 package com.example.newsfeed.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
 import com.example.newsfeed.R;
-import com.example.newsfeed.adapter.PageAdapter;
+import com.example.newsfeed.adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,7 +29,7 @@ public class SourceActivity extends AppCompatActivity {
         tabTechnology = findViewById(R.id.item_technology);
 
         viewPager = findViewById(R.id.viewpager);
-        final PagerAdapter pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
