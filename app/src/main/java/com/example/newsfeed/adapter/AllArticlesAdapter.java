@@ -1,7 +1,6 @@
 package com.example.newsfeed.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +44,7 @@ public class AllArticlesAdapter extends RecyclerView.Adapter<AllArticlesAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final ArticleViewHolder holder, final int position) {
+
         AllArticles articles = mAllArticles.get(position);
 
         Glide.with(mContext)
@@ -98,7 +98,6 @@ public class AllArticlesAdapter extends RecyclerView.Adapter<AllArticlesAdapter.
             date = itemView.findViewById(R.id.date_text);
             source = itemView.findViewById(R.id.source_text);
             progressBar = itemView.findViewById(R.id.prograss_load_photo);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -108,6 +107,7 @@ public class AllArticlesAdapter extends RecyclerView.Adapter<AllArticlesAdapter.
                     mContext.startActivity(intent);
                 }
             });
+
         }
     }
 }

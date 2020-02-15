@@ -110,6 +110,7 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
             description = itemView.findViewById(R.id.description_text);
             author = itemView.findViewById(R.id.author_text);
             source = itemView.findViewById(R.id.source_text);
+            progressBar = itemView.findViewById(R.id.prograss_load_photo);
             date = itemView.findViewById(R.id.date_text);
             progressBar = itemView.findViewById(R.id.prograss_load_photo);
 
