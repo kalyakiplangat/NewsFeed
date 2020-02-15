@@ -40,7 +40,6 @@ public class SourceActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                //some code here
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
