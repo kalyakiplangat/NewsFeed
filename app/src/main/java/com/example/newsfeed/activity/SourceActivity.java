@@ -35,12 +35,12 @@ public class SourceActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                //some code here
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                //some code here
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
